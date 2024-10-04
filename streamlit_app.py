@@ -26,9 +26,9 @@ chart_type = st.radio("Select Chart Type:", ["Line Chart", "Bar Chart"])
 st.subheader("Energy Consumed Per Hour")
 
 if chart_type == "Line Chart":
-    st.line_chart(df[['Timestamp', 'Power (W)']].set_index('Hour'))
+    st.line_chart(df[['Timestamp', 'Power (W)']].set_index('Timestamp'))
 elif chart_type == "Bar Chart":
-    st.bar_chart(df[['Timestamp', 'Power (W)']].set_index('Hour'))
+    st.bar_chart(df[['Timestamp', 'Power (W)']].set_index('Timestamp'))
 
 # Optionally, you can add more detailed custom graphs using matplotlib
 def plot_custom_graph(df, chart_type):
