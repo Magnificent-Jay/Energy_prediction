@@ -1,3 +1,6 @@
 streamlit>=1.26.0
 pandas
 plost
+numpy
+matplotlib
+io
