@@ -34,9 +34,9 @@ elif chart_type == "Bar Chart":
 def plot_custom_graph(df, chart_type):
     fig, ax = plt.subplots()
     if chart_type == "Line Chart":
-        ax.plot(df['Hour'], df['Energy_Consumed'], marker='o', linestyle='-', color='b', label='Energy Consumed')
+        ax.plot(df['Timestamp'], df['Power (W)'], marker='o', linestyle='-', color='b', label='Energy Consumed')
     elif chart_type == "Bar Chart":
-        ax.bar(df['Hour'], df['Energy_Consumed'], color='orange', label='Energy Consumed')
+        ax.bar(df['Timestamp'], df['Power (W)'], color='orange', label='Energy Consumed')
 
     ax.set_title("Energy Consumed Per Hour")
     ax.set_xlabel("Hour")
