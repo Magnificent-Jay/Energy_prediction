@@ -47,5 +47,7 @@ def plot_custom_graph(df, chart_type):
 # Display matplotlib graph (optional)
 st.pyplot(plot_custom_graph(df, chart_type))
 
+'''
 # Add auto-refresh every minute to simulate real-time updates
 st.experimental_rerun()
+'''
