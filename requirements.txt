@@ -1,6 +1,6 @@
 streamlit>=1.26.0
-pandas
+pandas>=2.0.3
 plost
 numpy
-matplotlib
+matplotlib>=3.8.0
 io
