@@ -19,35 +19,42 @@ st.title("Real-time Energy Consumption Dashboard")
 st.subheader("Energy Data Table (Live Update)")
 st.dataframe(df)  # Display the data as a table
 
+# Allow users to input the range of values to be plotted (based on Timestamp or index range)
+min_value, max_value = st.slider(
+    "Select the range of data to plot (by index):",
+    min_value=0,
+    max_value=len(df)-1,
+    value=(0, len(df)-1)
+)
+
+# Filter the dataframe based on the selected range
+df_filtered = df.iloc[min_value:max_value]
+
 # Select graph type (Bar chart or Line chart)
 chart_type = st.radio("Select Chart Type:", ["Line Chart", "Bar Chart"])
 
-# Plot energy consumption per hour
+# Allow the user to set the figure size for scalability
+width = st.number_input("Select plot width (inches):", min_value=5, max_value=20, value=10)
+height = st.number_input("Select plot height (inches):", min_value=3, max_value=12, value=6)
+
+# Plot energy consumption per hour with user-defined size
 st.subheader("Energy Consumed Per Hour")
 
-if chart_type == "Line Chart":
-    st.line_chart(df[['Timestamp', 'Power (W)']].set_index('Timestamp'))
-elif chart_type == "Bar Chart":
-    st.bar_chart(df[['Timestamp', 'Power (W)']].set_index('Timestamp'))
-
 # Optionally, you can add more detailed custom graphs using matplotlib
-def plot_custom_graph(df, chart_type):
-    fig, ax = plt.subplots()
+def plot_custom_graph(df, chart_type, width, height):
+    fig, ax = plt.subplots(figsize=(width, height))  # Adjust figure size
+
     if chart_type == "Line Chart":
         ax.plot(df['Timestamp'], df['Power (W)'], marker='o', linestyle='-', color='b', label='Energy Consumed')
     elif chart_type == "Bar Chart":
         ax.bar(df['Timestamp'], df['Power (W)'], color='orange', label='Energy Consumed')
 
     ax.set_title("Energy Consumed Per Hour")
-    ax.set_xlabel("Hour")
+    ax.set_xlabel("Timestamp")
     ax.set_ylabel("Energy Consumed (kWh)")
     ax.legend()
+    plt.xticks(rotation=45)
     return fig
 
-# Display matplotlib graph (optional)
-st.pyplot(plot_custom_graph(df, chart_type))
-
-'''
-# Add auto-refresh every minute to simulate real-time updates
-st.experimental_rerun()
-'''
+# Display the graph with the filtered data and custom size
+st.pyplot(plot_custom_graph(df_filtered, chart_type, width, height))
