@@ -28,9 +28,9 @@ chart_type = st.radio("Select Chart Type for Energy Consumption:", ["Line Chart"
 # Plot energy consumption per hour
 st.subheader("Energy Consumed Per Hour")
 if chart_type == "Line Chart":
-    st.line_chart(df[['Timestamp', 'Power (W)']]
+    st.line_chart(df[['Timestamp', 'Power (W)']])
 elif chart_type == "Bar Chart":
-    st.bar_chart(df[['Timestamp', 'Power (W)']]
+    st.bar_chart(df[['Timestamp', 'Power (W)']])
 
 # Predicted time to energy exhaustion (gauge or line chart option)
 st.subheader("Predicted Time to Energy Exhaustion (h)")
