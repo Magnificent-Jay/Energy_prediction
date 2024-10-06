@@ -3,3 +3,4 @@ pandas>=2.0.3
 plost
 numpy
 matplotlib>=3.8.0
+plotly
