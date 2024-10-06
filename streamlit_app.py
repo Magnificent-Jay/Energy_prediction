@@ -8,7 +8,7 @@ def get_data():
     df = pd.read_csv("Edited_Generated_Energy_Data.csv")  # Replace with actual path
     
     # Convert the 'Timestamp' column to datetime format
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S')
     
     return df
 
