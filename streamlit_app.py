@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 def get_data():
     df = pd.read_csv("Edited_Generated_Energy_Data.csv")  # Replace with actual path
     
+    # Convert the 'Timestamp' column to datetime format with the specific format 'MM/DD/YY hh:mm'
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%m/%d/%y %H:%M', errors='coerce')
+    
     return df
 
 # Load real-time data from Raspberry Pi
