@@ -63,5 +63,5 @@ if exhaust_chart_type == "Gauge Chart":
 # Line Chart Implementation
 elif exhaust_chart_type == "Line Chart":
     # Assuming df['Predicted_Time_to_Exhaustion'] exists in your data
-    st.line_chart(df[['Timestamp', 'Predicted_Time_to_Exhaustion']].set_index('Timestamp'))
+    st.line_chart(df[['Timestamp', 'Predicted_Time_to_Exhaustion (h)']].set_index('Timestamp'))
 
