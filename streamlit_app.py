@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 # Function to get real-time data from Raspberry Pi (replace with actual data retrieval)
 def get_data():
     df = pd.read_csv("Edited_Generated_Energy_Data.csv")  # Replace with actual path
+    
+    # Convert the 'Timestamp' column to datetime format
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
+    
     return df
 
 # Load real-time data from Raspberry Pi
