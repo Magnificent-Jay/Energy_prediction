@@ -29,13 +29,13 @@ elif chart_type == "Bar Chart":
     st.bar_chart(df[['Timestamp', 'Power (W)']].set_index('Timestamp'))
 
 # Predicted time to energy exhaustion (gauge or line chart option)
-st.subheader("Predicted Time to Energy Exhaustion")
+st.subheader("Predicted Time to Energy Exhaustion (h)")
 
 # Select chart type for energy exhaustion prediction
 exhaust_chart_type = st.radio("Select Chart Type for Energy Exhaustion Prediction:", ["Gauge Chart", "Line Chart"])
 
 # Mock-up predicted time to exhaustion data (replace this with your actual model's output)
-predicted_time = df['Predicted_Time_to_Exhaustion'].iloc[-1]  # Replace with actual prediction logic
+predicted_time = df['Predicted Time to Exhaustion (h)'].iloc[-1]  # Replace with actual prediction logic
 
 # Gauge Chart Implementation
 if exhaust_chart_type == "Gauge Chart":
